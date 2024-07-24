@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Cook, Dish, DishType
 
 
-@login_required
 def index(request):
     num_cooks = Cook.objects.count()
     num_dishes = Dish.objects.count()
