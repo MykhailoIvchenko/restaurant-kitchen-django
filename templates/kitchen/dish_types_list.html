@@ -1,67 +1,62 @@
-{% extends "layouts/base.html" %}
+{% extends "layouts/wrapper.html" %}
 {% load crispy_forms_filters %}
 
-{% block content %}
-  <section class="mt-8">
-    <div class="container">
+{% block inner_content %}
+    <div class="row align-center">
+      <h1 class="col-md-10">
+        Dish Types List
+      </h1>
 
-      <div class="row align-center">
-        <h1 class="col-md-10">
-          Dish Types List
-        </h1>
-
-        <a
-          href="{% url 'kitchen:dish-type-create' %}"
-          class="col-md-2 btn btn-primary link-to-page h-50"
-        >
-          Create
-        </a>
-      </div>
-
-      {% include 'includes/search_form.html' %}
-
-      {% if dish_types_list %}
-        <table class="table">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Update</th>
-            <th>Delete</th>
-          </tr>
-
-          {% for dish_type in dish_types_list %}
-            <tr>
-              <td>
-                  {{ dish_type.id }}
-              </td>
-              
-              <td>
-                  {{ dish_type.name }}
-              </td>
-              
-              <td>
-                  <a
-                      href="{% url 'kitchen:dish-type-update' pk=dish_type.id%}"
-                      class="btn btn-secondary"
-                  >
-                    Update
-                  </a>
-                </td>
-                <td>
-                  <a
-                    class="btn btn-danger"
-                    href="#"
-                  >
-                    Delete
-                  </a>
-                </td>
-            </tr>
-          {% endfor %}
-        </table>
-
-      {% else %}
-          <p class="text-center">There are no dish types in the service.</p>
-      {% endif %}
+      <a
+        href="{% url 'kitchen:dish-type-create' %}"
+        class="col-md-2 btn btn-primary link-to-page h-50"
+      >
+        Create
+      </a>
     </div>
-  </section>
+
+    {% include 'includes/search_form.html' %}
+
+    {% if dish_types_list %}
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+
+        {% for dish_type in dish_types_list %}
+          <tr>
+            <td>
+                {{ dish_type.id }}
+            </td>
+
+            <td>
+                {{ dish_type.name }}
+            </td>
+
+            <td>
+                <a
+                    href="{% url 'kitchen:dish-type-update' pk=dish_type.id%}"
+                    class="btn btn-secondary"
+                >
+                  Update
+                </a>
+              </td>
+              <td>
+                <a
+                  class="btn btn-danger"
+                  href="{% url 'kitchen:dish-type-delete' pk=dish_type.id%}"
+                >
+                  Delete
+                </a>
+              </td>
+          </tr>
+        {% endfor %}
+      </table>
+
+    {% else %}
+        <p class="text-center">There are no dish types in the service.</p>
+    {% endif %}
 {% endblock %}
