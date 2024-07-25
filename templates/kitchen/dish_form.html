@@ -26,14 +26,23 @@
       {{ form.dish_type }}
     </div>
     <span class="text-danger">{{ form.dish_type.errors }}</span>
-    
+
     <div class="form-group mb-2">
       <label for="id_cooks">Cooks:</label>
       <ul class="list-unstyled">
-        {% for cook in form.cooks %}
+        {% for cook in form.fields.cooks.queryset %}
           <li class="form-check">
-            <input type="checkbox" class="form-check-input" name="cooks" value="{{ cook.data.value }}">
-            <label class="form-check-label" for="{{ cook.id_for_label }}">{{ cook.choice_label }}</label>
+            <input
+                type="checkbox"
+                class="form-check-input"
+                name="cooks"
+                value="{{ cook.pk }}"
+                id="id_cook_{{ cook.pk }}"
+                {% if cook in form.initial.cooks %}
+                    checked
+                {% endif %}
+            >
+            <label class="form-check-label" for="{{ cook.id_for_label }}">{{ cook }}</label>
           </li>
         {% endfor %}
       </ul>
