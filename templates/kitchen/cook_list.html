@@ -2,7 +2,7 @@
 
 {% block inner_content %}
     <h1>
-      Driver List
+      Cooks List
 
        {% if user.is_superuser %}
         <a
@@ -34,7 +34,7 @@
           <td>{{ cook.years_of_experience }}</td>
         </tr>
       {% endfor %}
-  
+
       </table>
     {% else %}
       <p>There are no cooks in the service.</p>
