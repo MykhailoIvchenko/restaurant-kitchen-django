@@ -16,7 +16,11 @@
             <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
               <ul class="navbar-nav navbar-nav-hover ms-auto">
                 <li class="nav-item mx-2">
-                  <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" aria-expanded="false" href="#">
+                  <a 
+                    class="nav-link ps-2 d-flex cursor-pointer align-items-center" 
+                    aria-expanded="false" 
+                    href="{% url 'kitchen:dish-types-list' %}"
+                  >
                     <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
                     Dish types
                   </a>

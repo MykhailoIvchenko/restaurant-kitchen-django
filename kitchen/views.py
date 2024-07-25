@@ -1,7 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.views import generic
 
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, DishTypeSearchForm
 from .models import Cook, Dish, DishType
 
 
@@ -67,3 +69,28 @@ def register_view(request):
         form = RegistrationForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+
+
+class DishTypeListView(LoginRequiredMixin, generic.ListView):
+    model = DishType
+    context_object_name = "dish_types_list"
+    template_name = "kitchen/dish_types_list.html"
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishTypeListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+        context["name"] = name
+        context["search_form"] = DishTypeSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = DishType.objects.all()
+        name = self.request.GET.get("name")
+
+        if name:
+            return DishType.objects.filter(name__icontains=name)
+
+        return queryset
