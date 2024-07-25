@@ -40,6 +40,22 @@ class RegistrationForm(forms.ModelForm):
                 "class": "form-control"
             }
         ))
+    first_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "First name",
+                "class": "form-control"
+            }
+        ))
+    last_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name",
+                "class": "form-control"
+            }
+        ))
     years_of_experience = forms.IntegerField(
         label='Years of Experience',
         widget=forms.NumberInput(
