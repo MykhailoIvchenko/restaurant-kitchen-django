@@ -3,16 +3,16 @@
 {% block inner_content %}
   <h1>
     Username: {{ cook.username }}
-    
+
     {% if user.is_superuser %}
-      <a 
+      <a
   {#        href="{% url 'kitchen:cook-delete' pk=cook.id %}"#}
           class="btn btn-danger link-to-page">
         Delete
       </a>
-  
-      <a 
-  {#        href="{% url 'kitchen:cook-update' pk=cook.id %}" #}
+
+      <a
+          href="{% url 'kitchen:cook-update' pk=cook.id %}"
           class="btn btn-secondary link-to-page"
       >
         Update cook

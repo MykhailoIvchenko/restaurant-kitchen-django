@@ -138,3 +138,48 @@ class CookSearchForm(forms.Form):
             }
         )
     )
+
+
+class CookUpdateForm(forms.ModelForm):
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Username",
+                "class": "form-control"
+            }
+        ))
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control"
+            }
+        ))
+    first_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "First name",
+                "class": "form-control"
+            }
+        ))
+    last_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name",
+                "class": "form-control"
+            }
+        ))
+    years_of_experience = forms.IntegerField(
+        label='Years of Experience',
+        widget=forms.NumberInput(
+            attrs={
+                "placeholder": "Experience",
+                "class": "form-control"
+            }
+        ))
+
+    class Meta:
+        model = Cook
+        fields = ('username', 'email', 'years_of_experience')

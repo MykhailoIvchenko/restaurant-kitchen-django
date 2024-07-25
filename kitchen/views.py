@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import LoginForm, RegistrationForm, DishTypeSearchForm, DishTypeForm, CookSearchForm
+from .forms import LoginForm, RegistrationForm, DishTypeSearchForm, DishTypeForm, CookSearchForm, CookUpdateForm
 from .models import Cook, Dish, DishType
 
 
@@ -150,4 +150,10 @@ class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
 class CookCreateView(SuperuserRequiredMixin, generic.CreateView):
     model = Cook
     form_class = RegistrationForm
+    success_url = reverse_lazy("kitchen:cooks-list")
+
+
+class CookUpdateView(SuperuserRequiredMixin, generic.UpdateView):
+    model = Cook
+    form_class = CookUpdateForm
     success_url = reverse_lazy("kitchen:cooks-list")
