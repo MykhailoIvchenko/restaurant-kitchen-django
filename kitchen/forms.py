@@ -108,3 +108,17 @@ class DishTypeForm(forms.ModelForm):
                 "class": "form-control"
             }),
         }
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by username",
+                "class": "form-control"
+            }
+        )
+    )

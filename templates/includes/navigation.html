@@ -17,9 +17,9 @@
               <ul class="navbar-nav navbar-nav-hover ms-auto">
                 <li class="nav-item mx-2">
                   <a 
-                    class="nav-link ps-2 d-flex cursor-pointer align-items-center" 
-                    aria-expanded="false" 
-                    href="{% url 'kitchen:dish-types-list' %}"
+                      class="nav-link ps-2 d-flex cursor-pointer align-items-center" 
+                      aria-expanded="false" 
+                      href="{% url 'kitchen:dish-types-list' %}"
                   >
                     <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
                     Dish types
@@ -34,7 +34,11 @@
                 </li>
 
                 <li class="nav-item mx-2">
-                  <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" aria-expanded="false" href="#">
+                  <a 
+                      class="nav-link ps-2 d-flex cursor-pointer align-items-center" 
+                      aria-expanded="false" 
+                      href="{% url 'kitchen:cooks-list' %}"
+                  >
                     <i class="material-icons opacity-6 me-2 text-md">article</i>
                     Cooks
                   </a>
