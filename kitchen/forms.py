@@ -4,8 +4,9 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import forms
+from django.contrib.auth import get_user_model
 
-from kitchen.models import Cook, DishType
+from kitchen.models import Cook, DishType, Dish
 
 
 class LoginForm(forms.Form):
@@ -198,3 +199,33 @@ class DishSearchForm(forms.Form):
         )
     )
 
+
+class DishForm(forms.ModelForm):
+    cooks = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
+
+    class Meta:
+        model = Dish
+        fields = ['name', 'description', 'price', 'dish_type', 'cooks']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                "placeholder": "Name",
+                "class": "form-control"
+            }),
+            'description': forms.Textarea(attrs={
+                "placeholder": "Description",
+                "class": "form-control"
+            }),
+            'price': forms.NumberInput(attrs={
+                "placeholder": "Price",
+                "class": "form-control"
+            }),
+            'dish_type': forms.Select(attrs={
+                "title": "Dish Type",
+                "placeholder": "Dish Type",
+                "class": "form-control"
+            }),
+        }
