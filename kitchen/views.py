@@ -183,7 +183,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         name = self.request.GET.get("name")
 
         if name:
-            return Dish.objects.filter(model__icontains=name)
+            return Dish.objects.filter(name__icontains=name)
 
         return queryset
 
