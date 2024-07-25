@@ -4,7 +4,8 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import forms
-from kitchen.models import Cook
+
+from kitchen.models import Cook, DishType
 
 
 class LoginForm(forms.Form):
@@ -95,3 +96,15 @@ class DishTypeSearchForm(forms.Form):
             }
         )
     )
+
+
+class DishTypeForm(forms.ModelForm):
+    class Meta:
+        model = DishType
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                "placeholder": "Name",
+                "class": "form-control"
+            }),
+        }

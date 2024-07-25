@@ -5,6 +5,7 @@ from .views import (
     login_view,
     register_view,
     DishTypeListView,
+    DishTypeCreateView,
 )
 
 urlpatterns = [
@@ -15,6 +16,11 @@ urlpatterns = [
         "dish-types/",
         DishTypeListView.as_view(),
         name="dish-types-list",
+    ),
+    path(
+        "dish-types/create/",
+        DishTypeCreateView.as_view(),
+        name="dish-type-create",
     ),
 ]
 
