@@ -34,12 +34,14 @@
               <td>
                   {{ dish_type.id }}
               </td>
+              
               <td>
                   {{ dish_type.name }}
               </td>
+              
               <td>
                   <a
-                      href="#"
+                      href="{% url 'kitchen:dish-type-update' pk=dish_type.id%}"
                       class="btn btn-secondary"
                   >
                     Update
