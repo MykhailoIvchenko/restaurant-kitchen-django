@@ -157,3 +157,8 @@ class CookUpdateView(SuperuserRequiredMixin, generic.UpdateView):
     model = Cook
     form_class = CookUpdateForm
     success_url = reverse_lazy("kitchen:cooks-list")
+
+
+class CookDeleteView(SuperuserRequiredMixin, generic.DeleteView):
+    model = Cook
+    success_url = reverse_lazy("kitchen:cooks-list")

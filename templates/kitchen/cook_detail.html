@@ -6,7 +6,7 @@
 
     {% if user.is_superuser %}
       <a
-  {#        href="{% url 'kitchen:cook-delete' pk=cook.id %}"#}
+          href="{% url 'kitchen:cook-delete' pk=cook.id %}"
           class="btn btn-danger link-to-page">
         Delete
       </a>
