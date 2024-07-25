@@ -189,7 +189,8 @@ class DishListView(LoginRequiredMixin, generic.ListView):
 
 
 class DishDetailView(LoginRequiredMixin, generic.DeleteView):
-    pass
+    model = Dish
+    template_name = 'kitchen/dish_detail.html'
 
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):

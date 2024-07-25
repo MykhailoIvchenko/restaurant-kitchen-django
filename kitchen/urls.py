@@ -67,6 +67,12 @@ urlpatterns = [
     path(
         "dishes/<int:pk>/", DishDetailView.as_view(), name="dish-detail"
     ),
+    path(
+        "dishes/<int:pk>/update/", DishCreateView.as_view(), name="dish-update"
+    ),
+    path(
+        "dishes/<int:pk>/delete/", DishCreateView.as_view(), name="dish-delete"
+    ),
 ]
 
 app_name = "kitchen"

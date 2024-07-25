@@ -1,0 +1,37 @@
+{% extends "layouts/wrapper.html" %}
+
+{% block inner_content %}
+  <h1>
+    Dish: {{ dish.name }}
+
+    <a
+        href="{% url 'kitchen:dish-delete' pk=dish.id %}"
+        class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a
+        href="{% url 'kitchen:dish-update' pk=dish.id %}"
+        class="btn btn-secondary link-to-page"
+    >
+      Update
+   </a>
+  </h1>
+
+  <p><strong>Dish name:</strong> {{ dish.name }}</p>
+  <p><strong>Dish description:</strong> {{ dish.description }}</p>
+  <p><strong>Dish price:</strong> {{ dish.price }}USD</p>
+  <p><strong>Dish type:</strong> {{ dish.dish_type.name }}</p>
+
+  <div class="ml-3">
+    <h4>Cooks</h4>
+
+    <ul class="list-group w-lg-50">
+      {% for cook in dish.cooks.all %}
+        <li class="list-group-item">
+          {{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
