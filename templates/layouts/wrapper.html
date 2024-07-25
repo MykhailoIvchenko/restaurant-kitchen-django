@@ -1,10 +1,14 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-    <section class="mt-8">
+    <section class="mt-8 mb-2">
       <div class="container">
         {% block inner_content %}
         {% endblock %}
       </div>
     </section>
+
+    {% block pagination %}
+        {% include "includes/pagination.html" %}
+    {% endblock %}
 {% endblock %}
