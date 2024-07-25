@@ -4,7 +4,8 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import LoginForm, RegistrationForm, DishTypeSearchForm, DishTypeForm, CookSearchForm, CookUpdateForm
+from .forms import (LoginForm, RegistrationForm, DishTypeSearchForm,
+                    DishTypeForm, CookSearchForm, CookUpdateForm, DishSearchForm)
 from .models import Cook, Dish, DishType
 
 
@@ -162,3 +163,30 @@ class CookUpdateView(SuperuserRequiredMixin, generic.UpdateView):
 class CookDeleteView(SuperuserRequiredMixin, generic.DeleteView):
     model = Cook
     success_url = reverse_lazy("kitchen:cooks-list")
+
+
+class DishListView(LoginRequiredMixin, generic.ListView):
+    model = Dish
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+        context["name"] = name
+        context["search_form"] = DishSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Dish.objects.select_related("dish_type")
+        name = self.request.GET.get("name")
+
+        if name:
+            return Dish.objects.filter(model__icontains=name)
+
+        return queryset
+
+
+class DishDetailView(LoginRequiredMixin, generic.DeleteView):
+    pass
