@@ -58,13 +58,10 @@ def register_view(request):
             form.save()
             username = form.cleaned_data.get("username")
             raw_password = form.cleaned_data.get("password1")
-            user = authenticate(username=username, password=raw_password)
+            authenticate(username=username, password=raw_password)
 
             msg = 'Account created successfully.'
             success = True
-
-            # return redirect("/login/")
-
         else:
             msg = 'Form is not valid'
     else:
