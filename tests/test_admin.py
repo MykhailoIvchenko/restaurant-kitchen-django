@@ -43,25 +43,27 @@ class AdminSiteDishTypeTests(TestCase):
         self.admin_user = get_user_model().objects.create_superuser(
             username="admin.user",
             password="25qwerty1",
+            years_of_experience=3
         )
         self.client.force_login(self.admin_user)
 
     def test_dish_type_is_register_in_admin(self):
-        url = reverse("admin:kitchen_dish_type_changelist")
+        url = reverse("admin:kitchen_dishtype_changelist")
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, 200)
 
 
-class AdminSiteCarTests(TestCase):
+class AdminSiteDishTests(TestCase):
     def setUp(self) -> None:
         self.admin_user = get_user_model().objects.create_superuser(
             username="admin.user",
             password="25qwerty1",
+            years_of_experience=3
         )
         self.client.force_login(self.admin_user)
 
-    def test_car_is_register_in_admin(self):
+    def test_dish_is_register_in_admin(self):
         url = reverse("admin:kitchen_dish_changelist")
         response = self.client.get(url)
 
