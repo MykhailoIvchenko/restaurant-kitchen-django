@@ -108,7 +108,8 @@ class PrivateDishTest(TestCase):
         )
         Dish.objects.get(id=dish.id).refresh_from_db()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Dish.objects.get(id=dish.id).dish_type.name, dish_type)
+        self.assertEqual(Dish.objects.get(id=dish.id).dish_type.name,
+                         dish_type)
 
     def test_delete_dish(self):
         dish = Dish.objects.create(
