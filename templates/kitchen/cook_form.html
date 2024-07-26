@@ -1,9 +1,9 @@
 {% extends "layouts/wrapper.html" %}
 
 {% block inner_content %}
-  <h1>{{ object|yesno:"Update,Create" }} cook</h1>
+  <h1 class="text-center">{{ object|yesno:"Update,Create" }} cook</h1>
 
-  <form role="form" method="post" action="" class="mw-lg-50">
+  <form role="form" method="post" action="" class="w-lg-40 mx-auto">
     {% csrf_token %}
 
     <div class="input-group input-group-outline mb-3">
