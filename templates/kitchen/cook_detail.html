@@ -1,22 +1,26 @@
 {% extends "layouts/wrapper.html" %}
 
 {% block inner_content %}
-  <h1>
-    Username: {{ cook.username }}
+  <h1 class="d-flex justify-content-between align-center">
+    <span>
+      Username: {{ cook.username }}
+    </span>
 
     {% if user.is_superuser %}
-      <a
-          href="{% url 'kitchen:cook-delete' pk=cook.id %}"
-          class="btn btn-danger link-to-page">
-        Delete
-      </a>
+      <span>
+        <a
+            href="{% url 'kitchen:cook-delete' pk=cook.id %}"
+            class="btn btn-danger link-to-page mb-1">
+          Delete
+        </a>
 
-      <a
-          href="{% url 'kitchen:cook-update' pk=cook.id %}"
-          class="btn btn-secondary link-to-page"
-      >
-        Update cook
-     </a>
+        <a
+            href="{% url 'kitchen:cook-update' pk=cook.id %}"
+            class="btn btn-secondary link-to-page mb-0"
+        >
+          Update
+       </a>
+      </span>
     {% endif %}
   </h1>
 
