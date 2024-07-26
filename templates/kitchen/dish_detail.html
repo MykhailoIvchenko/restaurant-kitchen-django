@@ -1,21 +1,25 @@
 {% extends "layouts/wrapper.html" %}
 
 {% block inner_content %}
-  <h1>
-    Dish: {{ dish.name }}
+  <h1 class="d-flex justify-content-between align-center">
+    <span>
+      Dish: {{ dish.name }}
+    </span>
 
-    <a
-        href="{% url 'kitchen:dish-delete' pk=dish.id %}"
-        class="btn btn-danger link-to-page">
-      Delete
-    </a>
+    <span>
+        <a
+            href="{% url 'kitchen:dish-delete' pk=dish.id %}"
+            class="btn btn-danger link-to-page  mb-0">
+          Delete
+        </a>
 
-    <a
-        href="{% url 'kitchen:dish-update' pk=dish.id %}"
-        class="btn btn-secondary link-to-page"
-    >
-      Update
-   </a>
+        <a
+            href="{% url 'kitchen:dish-update' pk=dish.id %}"
+            class="btn btn-secondary link-to-page mb-0"
+        >
+          Update
+       </a>
+    </span>
   </h1>
 
   <p><strong>Dish name:</strong> {{ dish.name }}</p>
