@@ -9,8 +9,15 @@ from .views import (
     DishTypeUpdateView,
     DishTypeDeleteView,
     CooksListView,
-    CookDetailView, CookCreateView, CookUpdateView, CookDeleteView, DishListView, DishCreateView, DishDetailView,
-    DishUpdateView, DishDeleteView,
+    CookDetailView,
+    CookCreateView,
+    CookUpdateView,
+    CookDeleteView,
+    DishListView,
+    DishCreateView,
+    DishDetailView,
+    DishUpdateView,
+    DishDeleteView,
 )
 
 

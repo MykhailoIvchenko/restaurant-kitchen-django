@@ -4,8 +4,16 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import (LoginForm, RegistrationForm, DishTypeSearchForm,
-                    DishTypeForm, CookSearchForm, CookUpdateForm, DishSearchForm, DishForm)
+from .forms import (
+    LoginForm,
+    RegistrationForm,
+    DishTypeSearchForm,
+    DishTypeForm,
+    CookSearchForm,
+    CookUpdateForm,
+    DishSearchForm,
+    DishForm,
+)
 from .models import Cook, Dish, DishType
 
 
@@ -67,7 +75,9 @@ def register_view(request):
     else:
         form = RegistrationForm()
 
-    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+    return render(request,
+                  "accounts/register.html",
+                  {"form": form, "msg": msg, "success": success})
 
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):

@@ -84,7 +84,9 @@ class PrivateDishTest(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
-            Dish.objects.get(id=self.user.dishes.first().id).dish_type.name, dish_type
+            Dish.objects.get(
+                id=self.user.dishes.first().id).dish_type.name,
+            dish_type
         )
 
     def test_update_dish(self):

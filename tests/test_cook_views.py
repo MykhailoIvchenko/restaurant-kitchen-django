@@ -62,4 +62,3 @@ class PrivateCookTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "kitchen/cook_detail.html")
-
