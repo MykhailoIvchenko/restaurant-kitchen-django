@@ -1,0 +1,33 @@
+{% extends "layouts/wrapper.html" %}
+
+{% block inner_content %}  
+  <h1 class="d-flex justify-content-between align-center">
+      <span>
+        Dishes list
+      </span>
+
+      <a
+        href="{% url 'kitchen:dish-create' %}"
+        class="btn btn-primary link-to-page h-50 mb-0"
+      >
+        Create
+      </a>
+    </h1>
+
+  {% include "includes/search_form.html" %}
+
+  {% if dish_list %}
+    <ul class="list-group">
+      {% for dish in dish_list %}
+        <li class="list-group-item">
+          {{ dish.id }}
+          <a href="{% url "kitchen:dish-detail" pk=dish.id %} ">
+            {{ dish.name }} ({{ dish.dish_type.name }})
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no dishes in the restaurant</p>
+  {% endif %}
+{% endblock %}
