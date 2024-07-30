@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY',
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') == 'True'
 
-ALLOWED_HOSTS = ["127.0.0.1", "restaurant-kitchen-eo8l.onrender.com"]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', 0))
 SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') == 'True'
