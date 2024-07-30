@@ -15,10 +15,11 @@ import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+print("DEBUG:", os.getenv('DJANGO_DEBUG'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -27,11 +28,20 @@ SECRET_KEY = os.getenv('SECRET_KEY',
                        "django-insecure-9+g11=%t^mwqfp9)vdq=_8+!(xo^a)kv7*_q-v^6-!y3j(ps$r")
 
 
-# SECURITY WARNING: don"t run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG', False)
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv('DJANGO_DEBUG') == 'True'
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(',')
 
+SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', 0))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') == 'True'
+SECURE_HSTS_PRELOAD = os.getenv('SECURE_HSTS_PRELOAD') == 'True'
+
+SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT') == 'True'
+
+SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE') == 'True'
+
+CSRF_COOKIE_SECURE = os.getenv('CSRF_COOKIE_SECURE') == 'True'
 
 # Application definition
 
